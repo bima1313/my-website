@@ -8,12 +8,10 @@ interface props {
 export const Card: React.FC<props> = ({ portfolioData }) => {
   const hover = useRef<HTMLInputElement | null>(null);
   function handleHover() {
-    hover.current?.classList.add("-translate-y-[5.5rem]");
-    console.log("hover");
+    hover.current?.classList.add("-translate-y-[5.5rem]");    
   }
   function handleOver() {
-    hover.current?.classList.remove("-translate-y-[5.5rem]");
-    console.log("over");
+    hover.current?.classList.remove("-translate-y-[5.5rem]");    
   }
   return (
     <a href={portfolioData.image.link} target="_blank">
