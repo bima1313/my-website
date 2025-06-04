@@ -8,6 +8,14 @@
   --font-montserrat: "Montserrat", "sans-serif";
 }
 
+.no-scrollbar::-webkit-scrollbar{
+  display:none;
+}
+.no-scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .navbar-glass {
   @apply fixed z-10 bg-white opacity-85;
   backdrop-filter: blur(5px);
