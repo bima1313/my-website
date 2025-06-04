@@ -22,7 +22,7 @@ export const TechStackSection: React.FC<props> = ({ techStack }) => {
       </h5>
       <ul ref={imageSpacing} className="flex flex-wrap gap-5 xl:justify-start">
         {techStack.images.map((data: ImageData) => (
-          <li key={data.imageAlt} className="opacity-85 transition duration-300 hover:opacity-100">
+          <li key={data.imageAlt} className="opacity-100 transition duration-300 lg:opacity-50 hover:opacity-100">
             <a href={data.link} target="_blank">
               <img
                 src={data.imageSource}

@@ -1,11 +1,22 @@
-import type { FC } from "react";
+import { useEffect, useRef, type FC } from "react";
 import profileImg from "/src/assets/profile.jpg";
 
 export const Home: FC = () => {
+  const titleAnimation = useRef<HTMLHeadingElement | null>(null);
+  const imageAnimation = useRef<HTMLImageElement | null>(null);
+  useEffect(() => {
+    titleAnimation.current?.classList.add("translate-x-0");
+    titleAnimation.current?.classList.remove("-translate-x-[40rem]");
+    imageAnimation.current?.classList.add("translate-x-0");
+    imageAnimation.current?.classList.remove("translate-x-[40rem]");
+  });
   return (
     <section id="home" className="relative lg:static">
       <div className="w-full flex flex-wrap items-center">
-        <div className="absolute top-full w-full lg:w-3/4 3xl:w-1/2 lg:static">
+        <div
+          ref={titleAnimation}
+          className="absolute top-full w-full transition duration-700 -translate-x-[40rem] lg:w-3/4 lg:static 3xl:w-1/2"
+        >
           <h4 className="text-xl font-poppins tracking-wide lg:text-2xl">
             Hello, everyone
           </h4>
@@ -30,9 +41,10 @@ export const Home: FC = () => {
           </a>
         </div>
         <img
+          ref={imageAnimation}
           src={profileImg}
           alt="Bima Photo Profile"
-          className="mb-5 mx-auto w-52 h-52 rounded-full object-cover 2xl:w-2xs 2xl:h-72 lg:mb-0 3xl:mr-40 shadow-lg"
+          className="mb-5 mx-auto w-52 h-52 rounded-full object-cover shadow-lg transition duration-700 translate-x-[40rem] 2xl:w-2xs 2xl:h-72 lg:mb-0 3xl:mr-40"
         />
       </div>
     </section>

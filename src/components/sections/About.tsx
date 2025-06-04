@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { techStackData } from "../../data/tech-stack-data";
 import { Icon } from "../Icon";
 import { TechStackSection } from "../TechStackSection";
@@ -5,8 +6,17 @@ import githubSvg from "/src/assets/github.svg";
 import linkedInSvg from "/src/assets/linkedin.svg";
 
 export const About: React.FC = () => {
+  const titleAnimation = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => {
+    titleAnimation.current?.classList.add("translate-y-0");
+    titleAnimation.current?.classList.remove("translate-y-96");
+  });
   return (
-    <section id="about" className="mt-64 pt-32 lg:mt-0">
+    <section
+      ref={titleAnimation}
+      id="about"
+      className="mt-64 pt-32 translate-y-96 lg:mt-0 transition duration-700"
+    >
       <h2 className="font-montserrat font-bold tracking-wider text-3xl md:text-4xl">
         About Me
       </h2>

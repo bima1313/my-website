@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { Chip } from "./Chip";
+import type { Portfolio } from "../models/portfolio";
 
 interface props {
-  imageSrc: string;
-  imageAlt: string;
+  portfolioData: Portfolio;
 }
-export const Card: React.FC<props> = ({ imageSrc, imageAlt }) => {
+export const Card: React.FC<props> = ({ portfolioData }) => {
   const hover = useRef<HTMLInputElement | null>(null);
   function handleHover() {
     hover.current?.classList.add("-translate-y-[5.5rem]");
@@ -16,7 +16,7 @@ export const Card: React.FC<props> = ({ imageSrc, imageAlt }) => {
     console.log("over");
   }
   return (
-    <a href="">
+    <a href={portfolioData.image.link} target="_blank">
       <div className="w-full rounded-4xl bg-primary sm:w-4/5 md:w-[304px] mx-auto">
         <div
           className="rounded-4xl overflow-hidden md:w-[304px] md:h-48"
@@ -25,8 +25,8 @@ export const Card: React.FC<props> = ({ imageSrc, imageAlt }) => {
           aria-label="Card Button"
         >
           <img
-            src={imageSrc}
-            alt={imageAlt}
+            src={portfolioData.image.imageSource}
+            alt={portfolioData.image.imageAlt}
             className="object-cover md:h-full"
           />
           <div
@@ -35,23 +35,16 @@ export const Card: React.FC<props> = ({ imageSrc, imageAlt }) => {
           >
             <div className="px-4 glass h-full rounded-b-4xl">
               <ul className="flex flex-wrap gap-1">
-                <li>
-                  <Chip text="React" />
-                </li>
-                <li>
-                  <Chip text="React" />
-                </li>
-                <li>
-                  <Chip text="React" />
-                </li>
-                <li>
-                  <Chip text="React" />
-                </li>
+                {portfolioData.categories.map((category) => (
+                  <li key={category}>
+                    <Chip text={category} />
+                  </li>
+                ))}
               </ul>
 
               <div className="flex flex-wrap items-center justify-between py-0.5">
                 <h2 className="font-montserrat font-semibold text-xl text-dark">
-                  Chef Claude
+                  {portfolioData.title}
                 </h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -68,21 +61,14 @@ export const Card: React.FC<props> = ({ imageSrc, imageAlt }) => {
         </div>
         <div className="lg:hidden">
           <h2 className="px-6 pt-4 font-montserrat font-semibold text-2xl text-white md:px-4">
-            Chef Claude
+            {portfolioData.title}
           </h2>
           <ul className="px-6 pt-4 pb-8 flex flex-wrap gap-3 md:px-4">
-            <li>
-              <Chip text="React" />
-            </li>
-            <li>
-              <Chip text="React" />
-            </li>
-            <li>
-              <Chip text="React" />
-            </li>
-            <li>
-              <Chip text="React" />
-            </li>
+            {portfolioData.categories.map((category) => (
+              <li key={category}>
+                <Chip text={category} />
+              </li>
+            ))}
           </ul>
         </div>
       </div>

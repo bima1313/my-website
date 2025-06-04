@@ -1,5 +1,5 @@
+import { portfolioData } from "../../data/portfolio-data";
 import { Card } from "../Card";
-import castoriceImg from "/src/assets/castorice.webp";
 
 export const Portfolio: React.FC = () => {
   return (
@@ -8,9 +8,9 @@ export const Portfolio: React.FC = () => {
         Portfolio
       </h2>
       <div className="flex flex-wrap gap-8 3xl:gap-8 md:justify-center lg:justify-start">
-        <Card imageSrc={castoriceImg} imageAlt="Castorice" />
-        <Card imageSrc={castoriceImg} imageAlt="Castorice" />
-        <Card imageSrc={castoriceImg} imageAlt="Castorice" />
+        {portfolioData.map((data,index) => (
+          <Card key={index} portfolioData={data}/>
+        ))}
       </div>
     </section>
   );
