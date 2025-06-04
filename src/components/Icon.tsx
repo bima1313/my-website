@@ -1,11 +1,16 @@
 interface props {
   imageSrc: string;
   imageAlt: string;
+  link: string;
 }
-export const Icon: React.FC<props> = ({ imageSrc, imageAlt }) => {
+export const Icon: React.FC<props> = ({ imageSrc, imageAlt, link }) => {
   return (
-    <button className="w-10 h-10 bg-amber-900 rounded-full flex items-center justify-center">
-      <img src={imageSrc} alt={imageAlt} className="w-8 h-8" />
-    </button>
+    <a
+      href={link}
+      target="_blank"
+      className="flex justify-center w-10 h-10 grayscale opacity-50 rounded-full border-2 border-slate-500 transition duration-300 hover:grayscale-0 hover:bg-primary hover:opacity-100"
+    >
+      <img src={imageSrc} alt={imageAlt} width="28px" />
+    </a>
   );
 };

@@ -10,7 +10,7 @@ export const NavigationBar: React.FC<props> = ({ navRef }) => {
       <ul className="block lg:flex">
         <li className="group">
           <a
-            href=""
+            href="#"
             className="text-dark py-2 mx-8 flex group-hover:text-primary font-poppins tracking-wide"
           >
             Home
@@ -18,7 +18,7 @@ export const NavigationBar: React.FC<props> = ({ navRef }) => {
         </li>
         <li className="group">
           <a
-            href=""
+            href="#about"
             className="text-dark py-2 mx-8 flex group-hover:text-primary font-poppins tracking-wide"
           >
             About
@@ -26,7 +26,7 @@ export const NavigationBar: React.FC<props> = ({ navRef }) => {
         </li>
         <li className="group">
           <a
-            href=""
+            href="#portfolio"
             className="text-dark py-2 mx-8 flex group-hover:text-primary font-poppins tracking-wide"
           >
             Portfolio
